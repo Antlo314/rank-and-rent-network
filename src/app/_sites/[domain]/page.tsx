@@ -1,38 +1,80 @@
 import { notFound } from "next/navigation";
+import Header from "@/components/Header";
+import LeadForm from "@/components/LeadForm";
 
 export default async function DomainHomePage({ params }: { params: Promise<{ domain: string }> }) {
   const { domain } = await params;
 
   if (domain === "atlantaroofingandsiding.net") {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center bg-zinc-950 text-white p-8">
-        <div className="absolute top-0 w-full h-96 bg-blue-900/20 blur-[100px] pointer-events-none" />
-        <h1 className="text-6xl font-extrabold mb-6 tracking-tight bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm z-10 text-center">
-          Atlanta Roofing & Siding
-        </h1>
-        <p className="text-xl text-zinc-400 max-w-2xl text-center mb-10 z-10">
-          Premium residential and commercial roofing services in the greater Atlanta area. We build roofs that last a lifetime.
-        </p>
-        <button className="z-10 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 transition-colors text-zinc-950 font-bold rounded-full shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-          Get a Free Estimate
-        </button>
+      <main className="min-h-screen bg-zinc-950 text-white selection:bg-emerald-500/30 relative">
+        <Header domain={domain} />
+        <div className="absolute top-0 w-full h-screen bg-[url('https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 pointer-events-none" />
+        <div className="absolute top-0 w-full h-screen bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950 pointer-events-none" />
+        
+        <div className="relative pt-40 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[90vh]">
+          <div className="z-10">
+            <div className="inline-block px-4 py-1.5 bg-emerald-900/40 text-emerald-400 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-emerald-500/20 backdrop-blur-md">
+              Atlanta&apos;s #1 Rated Roofing Co.
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-extrabold mb-8 tracking-tighter leading-[1.1] bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
+              Roofs Built to Last a <span className="text-emerald-400">Lifetime.</span>
+            </h1>
+            <p className="text-xl text-zinc-400 max-w-xl mb-10 leading-relaxed">
+              Premium residential and commercial roofing services in the greater Atlanta area. We offer emergency tarping, storm repair, and lifetime architectural shingle installations.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className="flex -space-x-4">
+                {[1,2,3,4].map(i => (
+                  <img key={i} src={`https://i.pravatar.cc/100?img=${i+10}`} className="w-12 h-12 rounded-full border-2 border-zinc-950 relative z-10" alt="Customer" />
+                ))}
+              </div>
+              <p className="text-zinc-400 text-sm font-medium">Trusted by <strong className="text-white">500+</strong> homeowners.</p>
+            </div>
+          </div>
+          
+          <div className="z-10">
+            <LeadForm domain={domain} />
+          </div>
+        </div>
       </main>
     );
   }
 
   if (domain === "personalinjuryatlantalawyer.com") {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white p-8">
-        <div className="absolute top-0 w-full h-96 bg-red-900/20 blur-[100px] pointer-events-none" />
-        <h1 className="text-6xl font-extrabold mb-6 tracking-tight bg-gradient-to-r from-red-500 via-orange-400 to-amber-300 bg-clip-text text-transparent drop-shadow-sm z-10 text-center">
-          Personal Injury Atlanta
-        </h1>
-        <p className="text-xl text-slate-400 max-w-2xl text-center mb-10 z-10">
-          Aggressive legal advocacy for injury victims in Georgia. We don&apos;t get paid until you win.
-        </p>
-        <button className="z-10 px-8 py-4 bg-red-600 hover:bg-red-500 transition-colors text-white font-bold rounded-full shadow-[0_0_30px_rgba(220,38,38,0.3)]">
-          Free Case Evaluation
-        </button>
+      <main className="min-h-screen bg-slate-950 text-white selection:bg-red-500/30 relative">
+        <Header domain={domain} />
+        <div className="absolute top-0 w-full h-screen bg-[url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 pointer-events-none" />
+        <div className="absolute top-0 w-full h-screen bg-gradient-to-b from-slate-950/40 via-slate-950/80 to-slate-950 pointer-events-none" />
+        
+        <div className="relative pt-40 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[90vh]">
+          <div className="z-10">
+            <div className="inline-block px-4 py-1.5 bg-red-900/40 text-red-400 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-red-500/20 backdrop-blur-md">
+              Available 24/7 For Emergencies
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-extrabold mb-8 tracking-tighter leading-[1.1] text-white">
+              Injured? We Fight For <span className="text-red-500">Your Maximum Compensation.</span>
+            </h1>
+            <p className="text-xl text-slate-400 max-w-xl mb-10 leading-relaxed">
+              Aggressive legal advocacy for injury victims in Georgia. Whether it&apos;s a car accident or workplace injury, we aggressively handle the insurance companies. <strong>We don&apos;t get paid until you win.</strong>
+            </p>
+            <div className="flex gap-8 border-y border-white/10 py-6">
+              <div>
+                <div className="text-3xl font-black text-white">$50M+</div>
+                <div className="text-sm text-slate-500 font-medium">Recovered for clients</div>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-white">99%</div>
+                <div className="text-sm text-slate-500 font-medium">Success Rate</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="z-10">
+            <LeadForm domain={domain} />
+          </div>
+        </div>
       </main>
     );
   }
