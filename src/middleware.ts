@@ -20,8 +20,11 @@ export default function middleware(req: NextRequest) {
   // Get hostname of request (e.g. atlantaroofingandsiding.net, localhost:3000)
   let hostname = req.headers.get("host")!;
 
-  // Handle localhost for local testing - default to the roofing domain for local dev
-  if (hostname.includes("localhost")) {
+  // Remove 'www.' to ensure consistent routing
+  hostname = hostname.replace("www.", "");
+
+  // Handle localhost or vercel.app for preview testing - default to the roofing domain for dev
+  if (hostname.includes("localhost") || hostname.includes("vercel.app")) {
     hostname = "atlantaroofingandsiding.net";
   }
 
