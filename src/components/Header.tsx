@@ -7,9 +7,9 @@ export default function Header({ domain }: { domain: string }) {
   const isInjury = domain.includes('injury');
   const accentText = isInjury ? 'text-red-400' : 'text-emerald-400';
   
-  // Twilio Phone Number Placeholder
-  // This will be dynamic based on the domain/location mapping in a production environment
-  const phoneNumber = isInjury ? "(404) 555-CRASH" : "(404) 555-ROOF";
+  // Twilio Active Call Tracking Numbers
+  const displayPhone = isInjury ? "(678) 626-2619" : "(678) 824-8682";
+  const telLink = isInjury ? "+16786262619" : "+16788248682";
 
   return (
     <motion.header 
@@ -29,9 +29,9 @@ export default function Header({ domain }: { domain: string }) {
           <a href="#" className="hover:text-white transition-colors">Reviews</a>
         </div>
         
-        <a href={`tel:${phoneNumber}`} className={`flex items-center gap-3 font-bold px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10 shadow-sm ${accentText}`}>
+        <a href={`tel:${telLink}`} className={`flex items-center gap-3 font-bold px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10 shadow-sm ${accentText}`}>
           <PhoneCall size={18} className="animate-pulse" />
-          {phoneNumber}
+          {displayPhone}
         </a>
       </div>
     </motion.header>
