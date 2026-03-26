@@ -11,10 +11,35 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
   const accentColor = isInjury ? 'bg-red-600 hover:bg-red-500 text-white' : 'bg-emerald-500 hover:bg-emerald-400 text-zinc-950';
   const shadowColor = isInjury ? 'rgba(220,38,38,0.3)' : 'rgba(16,185,129,0.3)';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    // TODO: Connect to Twilio/GHL/CRM endpoint to properly route and track lead value
+    setLoading(true);
+    
+    // Extract the precise data from the input fields
+    const formData = new FormData(e.currentTarget);
+    const leadData = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      domain,
+      locationName
+    };
+
+    try {
+      // Fire the lead data to our secure Next.js Backend Node API
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadData)
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Failed to push lead:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -46,16 +71,16 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
       
       <div className="space-y-4">
         <div>
-          <input required type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
+          <input required type="text" name="name" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
         </div>
         <div>
-          <input required type="tel" placeholder="Phone Number" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
+          <input required type="tel" name="phone" placeholder="Phone Number" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
         </div>
         <div>
-          <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
+          <input type="email" name="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
         </div>
-        <button type="submit" className={`w-full py-4 mt-2 rounded-xl font-bold transition-all shadow-lg text-lg ${accentColor}`}>
-          {isInjury ? 'Request Consultation' : 'Claim My Estimate'}
+        <button type="submit" disabled={loading} className={`w-full py-4 mt-2 rounded-xl font-bold transition-all shadow-lg text-lg ${accentColor} ${loading ? 'opacity-70 cursor-wait' : ''}`}>
+          {loading ? 'Sending Request...' : (isInjury ? 'Request Consultation' : 'Claim My Estimate')}
         </button>
       </div>
       <p className="text-xs text-center text-zinc-500 mt-6 flex flex-col items-center justify-center">
