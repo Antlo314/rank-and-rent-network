@@ -28,6 +28,6 @@ export default function middleware(req: NextRequest) {
     hostname = "atlantaroofingandsiding.net";
   }
 
-  // Rewrite to `app/_sites/[domain]/[path]` dynamic route
-  return NextResponse.rewrite(new URL(`/_sites/${hostname}${url.pathname}`, req.url));
+  // Rewrite to `app/sites/[domain]/[path]` dynamic route
+  return NextResponse.rewrite(new URL(`/sites/${hostname}${url.pathname}`, req.url));
 }
