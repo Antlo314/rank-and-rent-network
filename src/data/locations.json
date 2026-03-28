@@ -12,15 +12,75 @@
     "content": "Top-rated roofing contractors serving Marietta, GA. Specializing in architectural shingles, metal roofs, and seamless gutters."
   },
   {
+    "slug": "smyrna",
+    "name": "Smyrna",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Trusted Smyrna roofing services for local homeowners. We provide fast response for wind damage, premium shingle installations, and complete exterior restoration."
+  },
+  {
+    "slug": "sandy-springs",
+    "name": "Sandy Springs",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Expert roof replacements and leak repairs in Sandy Springs. Protect your property with our GAF Master Elite certified team and lifetime transferable warranties."
+  },
+  {
+    "slug": "roswell",
+    "name": "Roswell",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Award-winning roofing contractors in Roswell, GA. Specializing in high-end architectural shingles, siding replacement, and 24/7 emergency storm damage mitigation."
+  },
+  {
+    "slug": "decatur",
+    "name": "Decatur",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Professional roof repair and installation for Decatur residents. We handle everything from minor repairs to full-scale commercial roofing projects with precision."
+  },
+  {
+    "slug": "alpharetta",
+    "name": "Alpharetta",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Alpharetta's #1 choice for luxury roof installations. Elevate your home's curb appeal with our premium architectural roofing and custom seamless gutter systems."
+  },
+  {
+    "slug": "kennesaw",
+    "name": "Kennesaw",
+    "domain": "atlantaroofingandsiding.net",
+    "content": "Kennesaw's dedicated storm response roofing experts. We aggressively advocate on your behalf to negotiate fair insurance settlements for hail and wind damage."
+  },
+  {
     "slug": "atlanta",
     "name": "Atlanta",
     "domain": "personalinjuryatlantalawyer.com",
-    "content": "Aggressive representation for personal injury victims in Atlanta. Car accidents, truck collisions, and slip & fall cases."
+    "content": "Aggressive representation for personal injury victims in Atlanta. Car accidents, truck collisions, and slip & fall cases handled with zero upfront fees."
   },
   {
     "slug": "alpharetta",
     "name": "Alpharetta",
     "domain": "personalinjuryatlantalawyer.com",
-    "content": "Dedicated legal advocacy in Alpharetta, GA. Maximizing compensation for victims of negligence, medical malpractice, and workplace injuries."
+    "content": "Dedicated legal advocacy in Alpharetta, GA. Maximizing compensation for victims of negligence, medical malpractice, and catastrophic workplace injuries."
+  },
+  {
+    "slug": "marietta",
+    "name": "Marietta",
+    "domain": "personalinjuryatlantalawyer.com",
+    "content": "Cobb County's relentless personal injury team. Serving Marietta injury victims and fighting insurance companies to ensure you get every dollar you deserve."
+  },
+  {
+    "slug": "smyrna",
+    "name": "Smyrna",
+    "domain": "personalinjuryatlantalawyer.com",
+    "content": "Top-rated injury attorneys in Smyrna, GA. Whether you were rear-ended on 285 or injured in a commercial slip and fall, we are available 24/7."
+  },
+  {
+    "slug": "sandy-springs",
+    "name": "Sandy Springs",
+    "domain": "personalinjuryatlantalawyer.com",
+    "content": "Securing multi-million dollar verdicts for Sandy Springs residents. We take over the legal burden so you can focus 100% on your recovery."
+  },
+  {
+    "slug": "roswell",
+    "name": "Roswell",
+    "domain": "personalinjuryatlantalawyer.com",
+    "content": "Experienced accident lawyers in Roswell. From motorcycle crashes to wrongful death claims, we bring heavy legal firepower to every single case."
   }
 ]
