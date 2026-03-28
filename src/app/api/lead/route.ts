@@ -6,7 +6,8 @@ export async function POST(req: Request) {
     const { 
       name, phone, email, domain, locationName, 
       serviceType, timeline, 
-      incidentType, fault 
+      incidentType, fault,
+      zipCode
     } = body;
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
@@ -20,7 +21,8 @@ export async function POST(req: Request) {
 
     let message = `🚨 *NEW RANK & RENT LEAD!* 🚨\n\n` +
       `🌐 *Site:* ${domain}\n` +
-      `📍 *Location:* ${locationName || 'Main Page'}\n` +
+      `📍 *Target Route:* ${locationName || 'Main Page'}\n` +
+      `🏠 *User Zip Code:* ${zipCode || 'Not Provided'}\n` +
       `👤 *Name:* ${name}\n` +
       `📞 *Phone:* ${phone}\n` +
       `✉️ *Email:* ${email || 'Not Provided'}\n`;

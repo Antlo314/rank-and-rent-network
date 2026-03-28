@@ -29,7 +29,8 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
       serviceType: formData.get('serviceType'),
       timeline: formData.get('timeline'),
       incidentType: formData.get('incidentType'),
-      fault: formData.get('fault')
+      fault: formData.get('fault'),
+      zipCode: formData.get('zipCode')
     };
 
     try {
@@ -83,6 +84,9 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
         </div>
         <div>
           <input type="email" name="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
+        </div>
+        <div>
+          <input required type="text" name="zipCode" placeholder={isInjury ? "Accident Zip Code" : "Property Zip Code"} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
         </div>
         
         {isInjury ? (
