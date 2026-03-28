@@ -8,11 +8,23 @@ export default function LawHomeTemplate({ domain }: { domain: string }) {
     <main className="min-h-screen bg-zinc-950 text-white selection:bg-red-500/30 overflow-x-hidden">
       <Header domain={domain} />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center min-h-[90vh]">
+      {/* Hero Section with Cinematic Background */}
+      <div className="relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-zinc-950 z-0" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none mix-blend-screen"
+          src="/personal_injury.mp4"
+        />
+        
         {/* Aggressive Red Background Glow */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-900/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-900/20 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3 z-0" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/3 z-0" />
+        
+        <section className="relative z-10 pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center min-h-[90vh]">
         
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-950/40 text-red-500 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-red-500/20 backdrop-blur-md">
@@ -49,7 +61,8 @@ export default function LawHomeTemplate({ domain }: { domain: string }) {
         <div className="relative z-20 xl:justify-self-end w-full max-w-[500px] mx-auto xl:mx-0">
           <LeadForm domain={domain} />
         </div>
-      </section>
+        </section>
+      </div>
 
       {/* Authority Banner */}
       <section id="verdicts" className="border-y border-zinc-900 bg-black/50 relative z-20 backdrop-blur-sm">

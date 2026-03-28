@@ -9,12 +9,20 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
       <Header domain={domain} />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-28 pb-20">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-30 pointer-events-none mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/60 via-zinc-950/80 to-zinc-950 pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+      <div className="relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-zinc-950 z-0" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-40 z-0 pointer-events-none mix-blend-luminosity"
+          src="/roofing.mp4"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/60 via-zinc-950/80 to-zinc-950 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
         
-        <div className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <section className="relative z-10 w-full px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[90vh] pt-28 pb-20">
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-950/40 text-emerald-400 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-emerald-500/20 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -47,8 +55,8 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
           <div className="w-full max-w-lg mx-auto lg:ml-auto">
             <LeadForm domain={domain} />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Trust Banner & Reviews Wrapper */}
       <section id="reviews" className="border-y border-white/5 bg-zinc-900/50 relative z-20">

@@ -14,9 +14,21 @@ export default function RoofingLocationTemplate({
   return (
     <main className="min-h-screen bg-zinc-950 text-white selection:bg-emerald-500/30">
       <Header domain={domain} />
-      
-      <div className="relative pt-40 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-16 items-start">
-        {/* Main Content Area */}
+      <div className="relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-zinc-950 z-0" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-40 z-0 pointer-events-none mix-blend-luminosity"
+          src="/roofing.mp4"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/60 via-zinc-950/80 to-zinc-950 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+
+        <div className="relative pt-40 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-16 items-start z-10 min-h-[90vh]">
+          {/* Main Content Area */}
         <div className="z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-zinc-900 border border-zinc-800 text-emerald-400 text-sm font-bold uppercase tracking-widest rounded-full mb-8 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -51,6 +63,7 @@ export default function RoofingLocationTemplate({
         {/* Sticky Lead Form */}
         <div className="lg:sticky lg:top-32 h-fit z-20">
           <LeadForm domain={domain} locationName={locationName} />
+        </div>
         </div>
       </div>
 

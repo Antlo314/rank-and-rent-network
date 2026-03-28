@@ -15,9 +15,21 @@ export default function LawLocationTemplate({
     <main className="min-h-screen bg-zinc-950 text-white selection:bg-red-500/30 overflow-x-hidden">
       <Header domain={domain} />
       
-      <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-16 min-h-[90vh]">
+      <div className="relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-zinc-950 z-0" />
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none mix-blend-screen"
+          src="/personal_injury.mp4"
+        />
+        
         {/* Aggressive Red Background Glow */}
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0" />
+        
+        <div className="relative z-10 pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-16 min-h-[90vh]">
 
         <div className="relative z-10">
           <div className="inline-block px-4 py-1.5 bg-red-950/40 text-red-500 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
@@ -51,6 +63,7 @@ export default function LawLocationTemplate({
         {/* Sticky Lead Form specifically designed for high-stress urgency */}
         <div className="lg:sticky lg:top-32 h-fit relative z-20">
           <LeadForm domain={domain} locationName={locationName} />
+        </div>
         </div>
       </div>
 
