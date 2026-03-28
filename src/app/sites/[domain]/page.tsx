@@ -1,46 +1,16 @@
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import LeadForm from "@/components/LeadForm";
+import RoofingHomeTemplate from "@/components/templates/roofing/RoofingHomeTemplate";
 
 export default async function DomainHomePage({ params }: { params: Promise<{ domain: string }> }) {
   const { domain } = await params;
 
   if (domain === "atlantaroofingandsiding.net") {
-    return (
-      <main className="min-h-screen bg-zinc-950 text-white selection:bg-emerald-500/30 relative">
-        <Header domain={domain} />
-        <div className="absolute top-0 w-full h-screen bg-[url('https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 pointer-events-none" />
-        <div className="absolute top-0 w-full h-screen bg-gradient-to-b from-zinc-950/50 via-zinc-950/80 to-zinc-950 pointer-events-none" />
-        
-        <div className="relative pt-40 pb-20 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[90vh]">
-          <div className="z-10">
-            <div className="inline-block px-4 py-1.5 bg-emerald-900/40 text-emerald-400 text-sm font-bold uppercase tracking-widest rounded-full mb-8 border border-emerald-500/20 backdrop-blur-md">
-              Atlanta&apos;s #1 Rated Roofing Co.
-            </div>
-            <h1 className="text-6xl lg:text-7xl font-extrabold mb-8 tracking-tighter leading-[1.1] bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-              Roofs Built to Last a <span className="text-emerald-400">Lifetime.</span>
-            </h1>
-            <p className="text-xl text-zinc-400 max-w-xl mb-10 leading-relaxed">
-              Premium residential and commercial roofing services in the greater Atlanta area. We offer emergency tarping, storm repair, and lifetime architectural shingle installations.
-            </p>
-            <div className="flex items-center gap-6">
-              <div className="flex -space-x-4">
-                {[1,2,3,4].map(i => (
-                  <img key={i} src={`https://i.pravatar.cc/100?img=${i+10}`} className="w-12 h-12 rounded-full border-2 border-zinc-950 relative z-10" alt="Customer" />
-                ))}
-              </div>
-              <p className="text-zinc-400 text-sm font-medium">Trusted by <strong className="text-white">500+</strong> homeowners.</p>
-            </div>
-          </div>
-          
-          <div className="z-10">
-            <LeadForm domain={domain} />
-          </div>
-        </div>
-      </main>
-    );
+    return <RoofingHomeTemplate domain={domain} />;
   }
 
+  // Personal Injury Template logic will go here eventually
   if (domain === "personalinjuryatlantalawyer.com") {
     return (
       <main className="min-h-screen bg-slate-950 text-white selection:bg-red-500/30 relative">
