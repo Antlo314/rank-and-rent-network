@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import LeadForm from "@/components/LeadForm";
+import FooterServiceAreas from "@/components/FooterServiceAreas";
 import { ShieldCheck, Hammer, Wind } from "lucide-react";
 
 export default function RoofingHomeTemplate({ domain }: { domain: string }) {
@@ -109,8 +110,11 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
       </section>
       
       {/* Dynamic Location Placeholder Footer */}
-      <footer id="service-areas" className="border-t border-zinc-900 py-12 px-6 lg:px-12 text-center text-zinc-600">
-        <p>© {new Date().getFullYear()} Atlanta Roofing and Siding. All Rights Reserved.</p>
+      <footer id="service-areas" className="border-t border-zinc-900 bg-zinc-950">
+        <FooterServiceAreas domain={domain} />
+        <div className="py-12 px-6 lg:px-12 text-center text-zinc-600 border-t border-white/5">
+          <p>© {new Date().getFullYear()} Atlanta Roofing and Siding. All Rights Reserved.</p>
+        </div>
       </footer>
     </main>
   );

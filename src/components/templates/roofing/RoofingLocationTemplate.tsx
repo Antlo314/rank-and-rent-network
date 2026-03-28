@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import LeadForm from "@/components/LeadForm";
+import FooterServiceAreas from "@/components/FooterServiceAreas";
 
 export default function RoofingLocationTemplate({ 
   domain, 
@@ -52,6 +53,13 @@ export default function RoofingLocationTemplate({
           <LeadForm domain={domain} locationName={locationName} />
         </div>
       </div>
+
+      <footer id="service-areas" className="border-t border-zinc-900 bg-zinc-950 mt-12">
+        <FooterServiceAreas domain={domain} />
+        <div className="py-12 px-6 lg:px-12 text-center text-zinc-600 border-t border-white/5">
+          <p>© {new Date().getFullYear()} Atlanta Roofing and Siding. All Rights Reserved.</p>
+        </div>
+      </footer>
     </main>
   );
 }
