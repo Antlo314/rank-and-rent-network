@@ -24,7 +24,12 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
       phone: formData.get('phone'),
       email: formData.get('email'),
       domain,
-      locationName
+      locationName,
+      // Dynamic logic for specific networks
+      serviceType: formData.get('serviceType'),
+      timeline: formData.get('timeline'),
+      incidentType: formData.get('incidentType'),
+      fault: formData.get('fault')
     };
 
     try {
@@ -79,6 +84,51 @@ export default function LeadForm({ domain, locationName }: { domain: string, loc
         <div>
           <input type="email" name="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 transition-colors" />
         </div>
+        
+        {isInjury ? (
+          <>
+            <div>
+              <select required aria-label="Incident Type" name="incidentType" defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white appearance-none focus:outline-none focus:border-white/30 transition-colors">
+                <option value="" disabled className="text-zinc-500">What type of accident?</option>
+                <option value="Car / Auto Accident" className="bg-zinc-900">Car / Auto Accident</option>
+                <option value="Slip and Fall" className="bg-zinc-900">Slip & Fall</option>
+                <option value="Workplace Injury" className="bg-zinc-900">Workplace Injury</option>
+                <option value="Medical Malpractice" className="bg-zinc-900">Medical Malpractice</option>
+                <option value="Other" className="bg-zinc-900">Other</option>
+              </select>
+            </div>
+            <div>
+              <select required aria-label="Fault" name="fault" defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white appearance-none focus:outline-none focus:border-white/30 transition-colors">
+                <option value="" disabled className="text-zinc-500">Were you at fault?</option>
+                <option value="No - Not at fault" className="bg-zinc-900">No - The other party is at fault</option>
+                <option value="Yes - Partially or Fully" className="bg-zinc-900">Yes - Partially or Fully</option>
+                <option value="Not Sure" className="bg-zinc-900">Not Sure / Police report pending</option>
+              </select>
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <select required aria-label="Service Type" name="serviceType" defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white appearance-none focus:outline-none focus:border-white/30 transition-colors">
+                <option value="" disabled className="text-zinc-500">What do you need help with?</option>
+                <option value="Full Roof Replacement" className="bg-zinc-900">Full Roof Replacement</option>
+                <option value="Severe Storm / Hail Damage" className="bg-zinc-900">Severe Storm / Insurance Claim</option>
+                <option value="Minor Leak / Repair" className="bg-zinc-900">Minor Leak / Repair</option>
+                <option value="Siding or Gutters" className="bg-zinc-900">Siding or Gutters</option>
+                <option value="Commercial Roofing" className="bg-zinc-900">Commercial Roofing</option>
+              </select>
+            </div>
+            <div>
+              <select required aria-label="Timeline" name="timeline" defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white appearance-none focus:outline-none focus:border-white/30 transition-colors">
+                <option value="" disabled className="text-zinc-500">How soon do you need this fixed?</option>
+                <option value="ASAP - Active Emergency" className="bg-zinc-900">ASAP - Active Emergency</option>
+                <option value="Within 1-2 Weeks" className="bg-zinc-900">Within 1-2 Weeks</option>
+                <option value="Just getting an estimate" className="bg-zinc-900">Just getting an estimate</option>
+              </select>
+            </div>
+          </>
+        )}
+        
         <button type="submit" disabled={loading} className={`w-full py-4 mt-2 rounded-xl font-bold transition-all shadow-lg text-lg ${accentColor} ${loading ? 'opacity-70 cursor-wait' : ''}`}>
           {loading ? 'Sending Request...' : (isInjury ? 'Request Consultation' : 'Claim My Estimate')}
         </button>
