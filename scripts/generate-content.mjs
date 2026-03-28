@@ -10,21 +10,50 @@ const DOMAINS = {
   INJURY: "personalinjuryatlantalawyer.com"
 };
 
-const TARGET_CITIES = ["roswell", "sandy-springs", "decatur", "johns-creek", "smyrna"];
+// 100 high-income/high-population Metro Atlanta & Georgia locales
+const TARGET_CITIES = [
+  'alpharetta', 'milton', 'roswell', 'johns-creek', 'sandy-springs', 'dunwoody', 'decatur', 
+  'peachtree-city', 'suwanee', 'duluth', 'woodstock', 'canton', 'kennesaw', 'marietta', 'smyrna', 
+  'brookhaven', 'buckhead', 'vinings', 'chamblee', 'doraville', 'tucker', 'stone-mountain', 
+  'snellville', 'lawrenceville', 'dacula', 'buford', 'sugar-hill', 'cumming', 'dawsonville', 
+  'gainesville', 'flowery-branch', 'braselton', 'hoschton', 'winder', 'monroe', 'loganville', 
+  'conyers', 'covington', 'mcdonough', 'stockbridge', 'fayetteville', 'newnan', 'sharpsburg', 
+  'senoia', 'peachtree-corners', 'norcross', 'lilburn', 'stonecrest', 'lithonia', 'villa-rica', 
+  'carrollton', 'douglasville', 'dallas', 'hiram', 'acworth', 'powder-springs', 'austell', 
+  'mableton', 'college-park', 'east-point', 'hapeville', 'forest-park', 'riverdale', 'jonesboro', 
+  'lovejoy', 'hampton', 'locust-grove', 'griffin', 'jackson', 'social-circle', 'madison', 
+  'athens', 'watkinsville', 'bogart', 'statham', 'jefferson', 'commerce', 'royston', 'hartwell', 
+  'lavonia', 'toccoa', 'cornelia', 'clarkesville', 'cleveland', 'dahlonega', 'jasper', 'ellijay', 
+  'blue-ridge', 'blairsville', 'hiawassee', 'young-harris', 'clayton', 'cartersville', 'rome', 
+  'calhoun', 'dalton', 'chatsworth', 'ringgold', 'fort-oglethorpe', 'lafayette', 'summerville'
+];
 
-async function generateContentForCity(city, domain) {
-  // Setup your OpenAI API key here:
-  // const apiKey = process.env.OPENAI_API_KEY;
+// Spintax Helper Function
+function spin(spintax) {
+  return spintax.replace(/{([^{}]*)}/g, (match, choices) => {
+    const options = choices.split('|');
+    return options[Math.floor(Math.random() * options.length)];
+  });
+}
+
+function generateSpintaxContent(city, domain) {
+  const formattedCity = city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   
-  // Real prompt example:
-  // const prompt = `Write a highly-converting, location-specific SEO paragraph for ${domain} targeting customers in ${city}, Georgia. Include local landmarks if possible.`;
+  if (domain === DOMAINS.ROOFING) {
+    const roofingSpintax = `{Expert|Professional|Top-rated|Award-winning|Trusted} {roofing contractors|roofing services|roof replacements|storm damage mitigation|roof repair} serving ${formattedCity}, GA. {We specialize in|Our local experts deliver|We provide} {high-end|premium|lifetime} {architectural shingles|metal roofs|seamless gutters} {and 24/7 emergency response|backed by industry-leading warranties|to protect your biggest investment}. {Contact us today for a free estimate|Call us now for a rapid inspection|Discover why ${formattedCity} homeowners trust us}.`;
+    return spin(roofingSpintax);
+  }
   
-  // Mock AI generation for demonstration
-  return `This is a highly optimized, AI-generated local SEO paragraph specifically crafted for ${city} residents seeking premium services from ${domain}.`;
+  if (domain === DOMAINS.INJURY) {
+    const injurySpintax = `{Aggressive|Dedicated|Top-rated|Experienced|Relentless} {personal injury|accident|injury} {lawyers|attorneys|advocates} {serving|representing victims in} ${formattedCity}, GA. {From catastrophic car crashes to slip & fall cases|We handle everything from truck accidents to medical malpractice|Maximizing compensation for victims of negligence}, {we fight the insurance companies|we bring heavy legal firepower|we aggressively advocate} {so you can focus 100% on recovery|to ensure you get every dollar you deserve}. {Zero upfront fees|We don't get paid unless you win}.`;
+    return spin(injurySpintax);
+  }
+
+  return `Premium services offered in ${formattedCity}.`;
 }
 
 async function runGenerator() {
-  console.log("🚀 Starting AI Content Generation Pipeline...");
+  console.log("🚀 Starting Programmatic Spintax Generation Pipeline...");
   
   const dataPath = path.join(__dirname, '../src/data/locations.json');
   let existingData = [];
@@ -36,27 +65,27 @@ async function runGenerator() {
     for (const domainKey of Object.keys(DOMAINS)) {
       const domain = DOMAINS[domainKey];
       
+      const formattedCityName = city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+      // Checking if slug and domain already exist
       if (existingData.find(loc => loc.slug === city && loc.domain === domain)) {
-        console.log(`⏩ Skipping ${city} for ${domain} - already exists.`);
-        continue;
+        continue; // Skip silently to keep console clean
       }
       
-      console.log(`🤖 Generating AI content for ${city} on ${domain}...`);
-      const content = await generateContentForCity(city, domain);
+      console.log(`🤖 Spinning content for ${formattedCityName} on ${domain}...`);
+      const content = generateSpintaxContent(city, domain);
       
       existingData.push({
         slug: city,
-        name: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+        name: formattedCityName,
         domain,
         content
       });
-      
-      await new Promise(r => setTimeout(r, 500)); // Rate limit buffer
     }
   }
   
   fs.writeFileSync(dataPath, JSON.stringify(existingData, null, 2));
-  console.log("✅ Generation complete! Updated src/data/locations.json.");
+  console.log(`✅ Generation complete! Populated ${existingData.length} total local SEO records running perfectly.`);
 }
 
 runGenerator().catch(console.error);
