@@ -49,8 +49,8 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
         </div>
       </section>
 
-      {/* Trust Banner */}
-      <section className="border-y border-white/5 bg-zinc-900/50 relative z-20">
+      {/* Trust Banner & Reviews Wrapper */}
+      <section id="reviews" className="border-y border-white/5 bg-zinc-900/50 relative z-20">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
            <div>
              <div className="text-4xl font-black text-white mb-1">15+</div>
@@ -75,7 +75,7 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
       </section>
 
       {/* Core Services */}
-      <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto relative z-20">
+      <section id="services" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto relative z-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Our Premium Services</h2>
           <p className="text-zinc-400 max-w-2xl mx-auto text-lg">We use the highest quality materials backed by industry-leading warranties to ensure your home is fully protected.</p>
@@ -109,7 +109,7 @@ export default function RoofingHomeTemplate({ domain }: { domain: string }) {
       </section>
       
       {/* Dynamic Location Placeholder Footer */}
-      <footer className="border-t border-zinc-900 py-12 px-6 lg:px-12 text-center text-zinc-600">
+      <footer id="service-areas" className="border-t border-zinc-900 py-12 px-6 lg:px-12 text-center text-zinc-600">
         <p>© {new Date().getFullYear()} Atlanta Roofing and Siding. All Rights Reserved.</p>
       </footer>
     </main>

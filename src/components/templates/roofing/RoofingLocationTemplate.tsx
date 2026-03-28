@@ -32,7 +32,8 @@ export default function RoofingLocationTemplate({
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          {/* Services Section */}
+          <div id="services" className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             <div className="p-8 bg-zinc-900/40 border border-zinc-800 rounded-3xl hover:border-emerald-500/30 transition-all hover:-translate-y-1 shadow-lg group">
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5 font-black text-xl group-hover:bg-emerald-500 group-hover:text-zinc-950 transition-colors">1</div>
               <h3 className="text-2xl font-bold mb-3">Roof Replacement</h3>

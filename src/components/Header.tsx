@@ -24,9 +24,9 @@ export default function Header({ domain }: { domain: string }) {
       
       <div className="flex items-center gap-6">
         <div className="hidden md:flex text-zinc-400 items-center gap-6 text-sm font-medium mr-4">
-          <a href="#" className="hover:text-white transition-colors">Services</a>
-          <a href="#" className="hover:text-white transition-colors">Service Areas</a>
-          <a href="#" className="hover:text-white transition-colors">Reviews</a>
+          <a href="#services" className="hover:text-white transition-colors">Services</a>
+          <a href="#service-areas" className="hover:text-white transition-colors">Service Areas</a>
+          <a href="#reviews" className="hover:text-white transition-colors">Reviews</a>
         </div>
         
         <a href={`tel:${telLink}`} className={`flex items-center gap-3 font-bold px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10 shadow-sm ${accentText}`}>
